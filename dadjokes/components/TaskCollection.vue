@@ -17,9 +17,9 @@ computed: {
     }
   },
 
- mounted() {
-     this.$axios.$get('/tasks')
-         .then(tasks =>  tasks.forEach( t => this.$store.commit('todo/add', t) ))
+ async fetch() {
+     let tasks = await this.$axios.$get('/tasks')
+     tasks.forEach( t => this.$store.commit('todo/add', t) )
   },
   methods: {
       deleteTask(todo) {
